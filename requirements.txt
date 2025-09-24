@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+plotly
+pandas_ta
+pyodbc
+python-dotenv
+# openai
+# plotly.graph_objs
+yfinance
