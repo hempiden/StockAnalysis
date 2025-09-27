@@ -5,7 +5,7 @@
 A simple Streamlit app that shows how to build a AI Powered StockAnalysis for DataU Capstone project. We basically can get data running directly on python, yet we decided to go through ETL CSV to Database, to Power BI all the way to streamlit app. 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-template.streamlit.app/)
 
-**#✨ Features Technologies used:**
+**#✨ Features **
 
 ```
 🔗 SQL Server integration: Pulls stock data directly from your database (stock_prices_Ver2 table).
@@ -21,6 +21,18 @@ A simple Streamlit app that shows how to build a AI Powered StockAnalysis for Da
 💰 Scenario simulator: Enter an investment amount and see expected value in 3m, 6m, 12m.
 
 🔄 Trade suggestions: Highlights potential sell/buyback points from forecast peaks/troughs.
+```
+
+**Technologies used:**
+```
+1. SSIS
+2. SQL
+3. Power BI
+4. Python
+ 4.1 Streamlit
+ 4.2 Prophet
+ 4.3 yfinance
+
 ```
 **## How to run it on your own machine**
 
