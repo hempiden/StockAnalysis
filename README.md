@@ -21,13 +21,14 @@ A simple Streamlit app that shows how to build a AI Powered StockAnalysis for Da
 
 🔄 Trade suggestions: Highlights potential sell/buyback points from forecast peaks/troughs.
 ```
-### How to run it on your own machine
-#1. 🛠️ Installation (Local Machine)
+**### How to run it on your own machine**
+
+**#1. 🛠️ Installation (Local Machine)**
 ```
 git clone https://github.com/hempiden/StockAnalysis.git
 cd StockAnalysis
 ```
-#2 pip install -r requirements.txt 
+**#2 pip install -r requirements.txt **
 ```
 pip install -r requirements.txt
 ```
