@@ -25,7 +25,7 @@ A simple Streamlit app that shows how to build a AI Powered StockAnalysis for Da
 #1. 🛠️ Installation (Local Machine)
 ```
 git clone https://github.com/hempiden/StockAnalysis.git
-cd stock-analysis-dashboard
+cd StockAnalysis
 ```
 #2 pip install -r requirements.txt 
 ```
