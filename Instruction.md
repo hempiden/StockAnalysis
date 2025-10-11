@@ -169,14 +169,81 @@ CREATE TABLE stock_prices_staging_Ver2 (
 ```
 <img width="1915" height="1026" alt="image" src="https://github.com/user-attachments/assets/b08399a5-c084-4b1f-8288-9bc811c005ca" />
 
+Now load the data from CSV Files to staging database with this Forloop setup. In this step we keep the same data type as it on CSV file.
+<img width="1909" height="1024" alt="image" src="https://github.com/user-attachments/assets/49499bc8-0f41-4518-adae-c1e9f476aecd" />
 
-**#1. 🛠️ Installation (Local Machine)**
+After complete loading data to staging database, the CSV files are move to achieve folder using "File System Task". 
+<img width="1366" height="950" alt="image" src="https://github.com/user-attachments/assets/2449d609-685d-4b31-98a9-a8a8a0f89e8e" />
+
+Last step on ETL stage, is getting data from staging database to Data Warehouse (DWH). 
+Now we need to create database for DWH. Run the SQL script below in SSMS to create Database for DWH.
+
+```
+USE master;
+Go
+DROP DATABASE IF EXISTS stock_db;
+Go
+CREATE DATABASE stock_db
+ON
+(
+NAME = stock_db,
+FILENAME = 'D:\SQLdata\StockDB.mdf',
+SIZE = 10MB,
+MAXSIZE = 100MB,
+FILEGROWTH = 10MB
+)
+LOG ON
+(
+NAME = stock_db_log,
+FILENAME = 'D:\SQLdata\StockDB_Log.ldf',
+SIZE = 5MB,
+MAXSIZE = 50MB,
+FILEGROWTH = 5MB);
+Go
+
+USE stock_db;
+Go
+Drop Table IF EXISTS dbo.stock_prices_Ver2;
+-- Stock Prices Ver2
+CREATE TABLE stock_prices_Ver2 (
+    Price_ID        INT IDENTITY(1,1) PRIMARY KEY,  -- surrogate key
+    Ticker          VARCHAR(20) NOT NULL,
+    Price_Date      DATE NOT NULL,
+    [Open]            DECIMAL(18,4),
+    [High]            DECIMAL(18,4),
+    [Low]             DECIMAL(18,4),
+    [Close]           DECIMAL(18,4),
+    Volume          BIGINT,
+    Dividends       DECIMAL(18,4),
+    Stock_Splits    DECIMAL(18,4),
+
+    -- Technical Indicators
+    SMA50           DECIMAL(18,4) Null,
+    SMA200          DECIMAL(18,4) Null,
+    EMA20           DECIMAL(18,4) Null,
+    RSI14           DECIMAL(10,4) Null,
+    MACD            DECIMAL(18,4) Null,
+    MACD_Signal     DECIMAL(18,4) Null,
+    MACD_Hist       DECIMAL(18,4) Null,
+    BB_Mid          DECIMAL(18,4) Null,
+    BB_Upper        DECIMAL(18,4) Null,
+    BB_Lower        DECIMAL(18,4) Null,
+
+    -- Index
+    CONSTRAINT uq_stock UNIQUE (Ticker, Price_Date)
+);
+```
+Setup Flow to lead data from staging to DWH. 
+<img width="1912" height="1025" alt="image" src="https://github.com/user-attachments/assets/db1a4d44-2a43-49cb-9765-9c477356393d" />
+
+
+**#2. 🛠️ Installation (Local Machine)**
 ```
 git clone https://github.com/hempiden/StockAnalysis.git
 cd StockAnalysis
 ```
 
-**#2 pip install -r requirements.txt**
+**#3 pip install -r requirements.txt**
 
 ```
 pip install -r requirements.txt
@@ -194,7 +261,7 @@ pip install -r requirements.txt
   scipy
   ```
 
-**#3 Configure SQL Server connection**
+**#4 Configure SQL Server connection**
 
 Edit app.py and update:
 ```
@@ -210,7 +277,7 @@ TABLE = "[dbo].[stock_prices_Ver2]"
   2. You replace with the info of your server, database and table.
   3. You have the correct ODBC driver installed (ODBC Driver 17 for SQL Server).
 
-**#4. Run the app**
+**#5. Run the app**
 
 ```
 streamlit run app.py
