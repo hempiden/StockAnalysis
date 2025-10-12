@@ -116,7 +116,7 @@ Then in SSIS run the script by use Execute Process Tast to load the file and run
 Now we get the CSV files store in our download folder destination. 
 <img width="682" height="986" alt="image" src="https://github.com/user-attachments/assets/3d17497d-c866-4283-a2b5-c113ad090939" />
 
-Let's Performance loading data to staging data base. Now we need a staging database. Go to SSMS create a staging table with following script. A copy of this SQL script is available in ETL folder, named ". 
+Let's Performance loading data to staging data base. Now we need a staging database. Go to SSMS create a staging table with following script. A copy of this SQL script is available in ETL folder, named "SQL_CreateStagingDB_Table.sql". 
 
 ```
 USE master;
@@ -176,7 +176,7 @@ After complete loading data to staging database, the CSV files are move to achie
 <img width="1366" height="950" alt="image" src="https://github.com/user-attachments/assets/2449d609-685d-4b31-98a9-a8a8a0f89e8e" />
 
 Last step on ETL stage, is getting data from staging database to Data Warehouse (DWH). 
-Now we need to create database for DWH. Run the SQL script below in SSMS to create Database for DWH.
+Now we need to create database for DWH. Run the SQL script below in SSMS to create Database for DWH. A copy of this SQL script is available in ETL folder, named "SQL_Create_DWH_Table.sql".
 
 ```
 USE master;
