@@ -35,7 +35,11 @@ A simple Streamlit app that shows how to build a AI Powered StockAnalysis for Da
 
 ```
 ** How to run it on your own machine**
-Go to Instruction.md for detail instruction from ETL stage. 
+
+
+Beware that our data is store in SQL Service on local marchine to illustrate ETL technique with SSIS. Go to Instruction.md for detail instruction from ETL stage. 
+
+<img src="https://github.com/hempiden/StockAnalysis/blob/main/.streamlit/ETL.png" alt="Logo">
 
 **#1. 🛠️ Installation (Local Machine)**
 ```
@@ -84,10 +88,7 @@ streamlit run app.py
 ```
 Then open the local URL (usually http://localhost:8501) in your browser.
 
-Beware that our data is store in SQL Service on local marchine to illustrate ETL technique with SSIS
-<img src="https://github.com/hempiden/StockAnalysis/blob/main/.streamlit/ETL.png" alt="Logo">
-
-A Power BI Dashboard were also design for project showcase
+**A Power BI Dashboard were also design for project showcase**
 <img src="https://github.com/hempiden/StockAnalysis/blob/main/.streamlit/powerBI.png" alt="Logo">
 
 **Refference**
