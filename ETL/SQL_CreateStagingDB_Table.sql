@@ -23,19 +23,6 @@ Go
 USE stock_db_staging;
 Go
 
--- Prices with indicators
-CREATE TABLE stock_prices_staging (
-    Ticker VARCHAR(10),
-    [date] DATE,
-    [open] DECIMAL(15,4),
-    [high] DECIMAL(15,4),
-    [low] DECIMAL(15,4),
-    [close] DECIMAL(15,4),
-    volume BIGINT,	
-	[split] DECIMAL(15,4),
-	[Dividends] DECIMAL(15,4),
-);
-
 CREATE TABLE stock_prices_staging_Ver2 (
     [Date]            VARCHAR(50),
     [Open]            VARCHAR(50),
@@ -57,3 +44,4 @@ CREATE TABLE stock_prices_staging_Ver2 (
     BB_Lower        VARCHAR(50),
     Ticker          VARCHAR(20)
 );
+
