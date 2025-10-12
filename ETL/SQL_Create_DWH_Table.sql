@@ -23,43 +23,8 @@ Go
 USE stock_db;
 Go
 
--- Users
-CREATE TABLE users (
-    user_id INT IDENTITY(1,1) PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    full_name VARCHAR(100),
-    email VARCHAR(100) UNIQUE,
-    password_hash VARCHAR(255) NOT NULL,
-    created_at DATETIME DEFAULT GETDATE()
-);
 
--- Requests (logs user activity + recommendation results)
-CREATE TABLE dbo.requests(
-    request_id INT IDENTITY(1,1) PRIMARY KEY,
-    user_id INT NOT NULL,
-    ticker VARCHAR(10) NOT NULL,
-    interval VARCHAR(10) NOT NULL,
-    recommendation NVARCHAR(MAX),
-    request_time DATETIME DEFAULT GETDATE(),
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
-
--- Stock Prices
-CREATE TABLE dbo.stock_prices(
-    id BIGINT IDENTITY(1,1) PRIMARY KEY,
-    ticker VARCHAR(10) NOT NULL,
-    [date] DATE NOT NULL,
-    [open] DECIMAL(15,4),
-    [high] DECIMAL(15,4),
-    [low] DECIMAL(15,4),
-    [close] DECIMAL(15,4),
-    volume BIGINT,
-	[split] DECIMAL(15,4),
-	[Dividends] DECIMAL(15,4),
-	CONSTRAINT uq_stock_date UNIQUE (ticker, [date])
-);
-
-Drop table dbo.stock_prices_Ver2 ;
+Drop Table IF EXISTS dbo.stock_prices_Ver2 ;
 -- Stock Prices Ver2
 CREATE TABLE stock_prices_Ver2 (
     Price_ID        INT IDENTITY(1,1) PRIMARY KEY,  -- surrogate key
@@ -87,4 +52,5 @@ CREATE TABLE stock_prices_Ver2 (
 
     -- Index
     CONSTRAINT uq_stock UNIQUE (Ticker, Price_Date)
+
 );
