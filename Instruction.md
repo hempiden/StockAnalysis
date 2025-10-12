@@ -116,7 +116,7 @@ Then in SSIS run the script by use Execute Process Tast to load the file and run
 Now we get the CSV files store in our download folder destination. 
 <img width="682" height="986" alt="image" src="https://github.com/user-attachments/assets/3d17497d-c866-4283-a2b5-c113ad090939" />
 
-Let's Performance loading data to staging data base. Now we need a staging database. Go to SSMS create a staging table with following script. 
+Let's Performance loading data to staging data base. Now we need a staging database. Go to SSMS create a staging table with following script. A copy of this SQL script is available in ETL folder, named ". 
 
 ```
 USE master;
@@ -233,9 +233,17 @@ CREATE TABLE stock_prices_Ver2 (
     CONSTRAINT uq_stock UNIQUE (Ticker, Price_Date)
 );
 ```
-Setup Flow to lead data from staging to DWH. 
+Setup Flow to load data from staging to DWH. On this stage, we need to meonipolate data before we load to DWH. 
 <img width="1912" height="1025" alt="image" src="https://github.com/user-attachments/assets/db1a4d44-2a43-49cb-9765-9c477356393d" />
 
+A Derived Column task were used to convert null data. 
+<img width="815" height="647" alt="image" src="https://github.com/user-attachments/assets/748296ed-fb4f-4893-ba13-4530199e4bbb" />
+Then Convert data types. 
+<img width="992" height="840" alt="image" src="https://github.com/user-attachments/assets/31aeaa3a-7cfb-49e2-89ac-22996a00f93d" />
+To avoid loading repeat data, duplicate to existing rows, we load only data that doesn't match in this Lookup to DWH. 
+<img width="1003" height="652" alt="image" src="https://github.com/user-attachments/assets/14e14089-9974-4acd-8627-909c12b67623" />
+
+**The ETL Step is completed.**
 
 **#2. 🛠️ Installation (Local Machine)**
 ```
