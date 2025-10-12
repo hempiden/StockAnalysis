@@ -1,11 +1,11 @@
 <img src="https://github.com/hempiden/StockAnalysis/blob/main/.streamlit/featureImage.png" alt="Logo">
 
-**# StockAnalysis 💬 **
+**StockAnalysis 💬 **
 
 A simple Streamlit app that shows how to build a AI Powered StockAnalysis for DataU Capstone project. We basically can get data running directly on python, yet we decided to go through ETL CSV to Database, to Power BI all the way to streamlit app. 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-template.streamlit.app/)
 
-**#✨ Features **
+**✨ Features **
 
 ```
 🔗 SQL Server integration: Pulls stock data directly from your database (stock_prices_Ver2 table).
@@ -34,7 +34,8 @@ A simple Streamlit app that shows how to build a AI Powered StockAnalysis for Da
  4.3 yfinance
 
 ```
-**## How to run it on your own machine**
+** How to run it on your own machine**
+Go to Instruction.md for detail instruction from ETL stage. 
 
 **#1. 🛠️ Installation (Local Machine)**
 ```
